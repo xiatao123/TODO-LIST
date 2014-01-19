@@ -21,6 +21,7 @@
 		20AF4F9D188BA2C100CF4470 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20AF4F9B188BA2C100CF4470 /* InfoPlist.strings */; };
 		20AF4F9F188BA2C100CF4470 /* TODO_LISTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AF4F9E188BA2C100CF4470 /* TODO_LISTTests.m */; };
 		20AF4FAA188BA2FB00CF4470 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AF4FA9188BA2FB00CF4470 /* TableViewController.m */; };
+		20AF4FAD188BA67300CF4470 /* EditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AF4FAC188BA67300CF4470 /* EditableCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		20AF4F9E188BA2C100CF4470 /* TODO_LISTTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TODO_LISTTests.m; sourceTree = "<group>"; };
 		20AF4FA8188BA2FB00CF4470 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		20AF4FA9188BA2FB00CF4470 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		20AF4FAB188BA67300CF4470 /* EditableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableCell.h; sourceTree = "<group>"; };
+		20AF4FAC188BA67300CF4470 /* EditableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				20AF4F7A188BA2C100CF4470 /* Supporting Files */,
 				20AF4FA8188BA2FB00CF4470 /* TableViewController.h */,
 				20AF4FA9188BA2FB00CF4470 /* TableViewController.m */,
+				20AF4FAB188BA67300CF4470 /* EditableCell.h */,
+				20AF4FAC188BA67300CF4470 /* EditableCell.m */,
 			);
 			path = "TODO LIST";
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 				20AF4F84188BA2C100CF4470 /* AppDelegate.m in Sources */,
 				20AF4FAA188BA2FB00CF4470 /* TableViewController.m in Sources */,
 				20AF4F80188BA2C100CF4470 /* main.m in Sources */,
+				20AF4FAD188BA67300CF4470 /* EditableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

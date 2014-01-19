@@ -7,6 +7,7 @@
 //
 
 #import "TableViewController.h"
+#import "EditableCell.h"
 
 @interface TableViewController ()
 @property (nonatomic, strong) NSMutableArray *todoList;
@@ -68,9 +69,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    EditableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [self.todoList objectAtIndex:indexPath.row];
+    cell.itemText.text = [self.todoList objectAtIndex:indexPath.row];
     return cell;
 }
 
