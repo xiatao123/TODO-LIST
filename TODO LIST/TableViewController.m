@@ -28,9 +28,7 @@
 
 -(id) initWithCoder:(NSCoder *)aDecoder{
     self =[super initWithCoder: aDecoder];
-    self.todoList = [[NSMutableArray alloc] init];
-    [self.todoList addObject:@"first item"];
-    [self.todoList addObject:@"second item"];
+    self.todoList = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"todo_list"]];
 
     return self;
 }
@@ -39,6 +37,8 @@
 {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    
+    self.todoList = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"todo_list"]];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -72,6 +72,7 @@
     EditableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     cell.itemText.text = [self.todoList objectAtIndex:indexPath.row];
+    [cell.itemText setEnabled:NO];
     return cell;
 }
 
@@ -129,7 +130,33 @@
 
 - (IBAction)addItem:(id)sender {
     [self.todoList insertObject:@"" atIndex:0];
+    [self storeDate];
     [self.tableView reloadData];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"select row %i", indexPath.row);
+    
+    EditableCell *selectedCell = (EditableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    [selectedCell.itemText setEnabled:YES];
+    [selectedCell.itemText becomeFirstResponder];
+}
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"deselect row %i", indexPath.row);
+    
+    EditableCell *selectedCell = (EditableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    [selectedCell.itemText setEnabled:NO];
+    [selectedCell.itemText resignFirstResponder];
+    [self.todoList removeObjectAtIndex:indexPath.row];
+    [self.todoList insertObject:selectedCell.itemText.text atIndex:indexPath.row];
+    [self storeDate];
+}
+
+-(void)storeDate{
+    [[NSUserDefaults standardUserDefaults] setObject:self.todoList forKey:@"todo_list"];
 }
 
 @end
