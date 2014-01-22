@@ -101,12 +101,17 @@
 }
 
 
-/*
+
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
+    
+    NSString *temp = [self.todoList objectAtIndex:fromIndexPath.row];
+    [self.todoList removeObjectAtIndex:fromIndexPath.row];
+    [self.todoList insertObject:temp atIndex:toIndexPath.row];
+    [self storeDate];
 }
-*/
+
 
 
 // Override to support conditional rearranging of the table view.
