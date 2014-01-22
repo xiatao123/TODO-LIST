@@ -11,6 +11,7 @@
 
 @interface TableViewController ()
 @property (nonatomic, strong) NSMutableArray *todoList;
+@property (nonatomic, strong) NSIndexPath *currentPath;
 - (IBAction)addItem:(id)sender;
 
 @end
@@ -129,6 +130,16 @@
  */
 
 - (IBAction)addItem:(id)sender {
+    
+        //[self.tableView deselectRowAtIndexPath:self.currentPath animated:NO];
+    EditableCell *selectedCell = (EditableCell *)[self.tableView cellForRowAtIndexPath:self.currentPath];
+    [selectedCell.itemText setEnabled:NO];
+    [selectedCell.itemText resignFirstResponder];
+    [self.todoList removeObjectAtIndex:self.currentPath.row];
+    [self.todoList insertObject:selectedCell.itemText.text atIndex:self.currentPath.row];
+    [self storeDate];
+
+    
     [self.todoList insertObject:@"" atIndex:0];
     [self storeDate];
     [self.tableView reloadData];
@@ -137,6 +148,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"select row %i", indexPath.row);
+    self.currentPath = indexPath;
     
     EditableCell *selectedCell = (EditableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     [selectedCell.itemText setEnabled:YES];
